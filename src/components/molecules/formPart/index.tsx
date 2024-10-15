@@ -1,4 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import FormLabel from "../../atoms/formLabel";
+import { formGroup } from "./style";
 
 type Props = {
   id: string;
@@ -9,14 +11,14 @@ type Props = {
 
 const FormPart = ({ id, labelText, children, isRequired = false }: Props) => {
   return (
-    <>
+    <div css={formGroup}>
       <FormLabel
         htmlFor={id}
         text={labelText}
         required={isRequired}
       ></FormLabel>
       {children}
-    </>
+    </div>
   );
 };
 
