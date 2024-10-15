@@ -4,6 +4,7 @@ export default {
   },
   extends: [
     "plugin:react/jsx-runtime",
-    "prettier"
+    "prettier",
+    "plugin:@emotion/recommended"
   ]
 }
