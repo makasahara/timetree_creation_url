@@ -1,13 +1,7 @@
-import Heading from './components/heading'
-import './App.css'
+import CreateUrlPage from "./components/pages/createUrlPage";
 
 function App() {
-
-  return (
-    <>
-      <Heading />
-    </>
-  )
+  return <CreateUrlPage />;
 }
 
-export default App
+export default App;
