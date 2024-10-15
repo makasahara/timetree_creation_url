@@ -4,8 +4,9 @@ import Input from "../../atoms/input";
 import FormPart from "../../molecules/formPart";
 import CheckBtn from "../../atoms/checkBtn";
 import TextArea from "../../atoms/textArea";
+import Btn from "../../atoms/btn";
 import { fieldset } from "./style";
-import { placeholders } from "./define";
+import { placeholders, btnLabel } from "./define";
 
 const Form = () => {
 
@@ -35,6 +36,7 @@ const Form = () => {
           <Input placeholder={placeholders.attachedUrl} />
         </FormPart>
       </fieldset>
+      <Btn label={btnLabel.createUrl} />
     </form>
   );
 }
