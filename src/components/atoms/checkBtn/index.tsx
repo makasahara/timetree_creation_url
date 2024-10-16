@@ -1,11 +1,22 @@
+import { HandleChange } from "../../types";
+
 type Props = {
+  resultId: string;
   text?: string;
+  handleChange: HandleChange;
 };
 
-const CheckBtn = ({ text = "" }: Props) => {
+const CheckBtn = ({ resultId, text = "", handleChange }: Props) => {
   return (
     <label>
-      <input type="checkbox" />
+      <input type="checkbox" id={resultId} onChange={(event) => {
+        handleChange({
+          target: {
+            id: resultId,
+            value: event.target.checked ? "1" : "0"
+          }
+        });
+      }} />
       {text}
     </label>
   );

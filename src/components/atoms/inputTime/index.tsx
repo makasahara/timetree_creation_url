@@ -1,14 +1,28 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
+import { formatTime } from '../../functions';
 import 'react-datepicker/dist/react-datepicker.css';
+import { HandleChange } from '../../types';
 
-const InputTime = () => {
-  const [time, setTime] = useState<Date | null>(new Date());
+const InputTime = ({ resultId, currentDateTime, handleChange }: {
+  resultId: string;
+  currentDateTime: Date;
+  handleChange: HandleChange;
+}) => {
+  const [dateTime, setDateTime] = useState<Date | null>(currentDateTime);
 
   return (
     <DatePicker
-      selected={time}
-      onChange={(date) => setTime(date)}
+      selected={dateTime}
+      onChange={(dateTime) => {
+        setDateTime(dateTime);
+        handleChange({
+          target: {
+            id: resultId,
+            value: dateTime ? formatTime(dateTime) : ""
+          }
+        });
+      }}
       showTimeSelect
       showTimeSelectOnly
       timeFormat="HH:mm"
