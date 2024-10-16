@@ -5,6 +5,7 @@ import FormPart from "../../molecules/formPart";
 import CheckBtn from "../../atoms/checkBtn";
 import TextArea from "../../atoms/textArea";
 import Btn from "../../atoms/btn";
+import FieldPeriod from "../fieldPeriod";
 import { fieldset } from "./style";
 import { placeholders, btnLabel } from "./define";
 
@@ -17,6 +18,9 @@ const Form = () => {
         <FormPart id="title" labelText="予定のタイトル" isRequired={true}>
           <Input placeholder={placeholders.title} />
         </FormPart>
+      </fieldset>
+      <fieldset css={fieldset}>
+        <FieldPeriod />
       </fieldset>
       <fieldset css={fieldset}>
         <CheckBtn text="終日" />
