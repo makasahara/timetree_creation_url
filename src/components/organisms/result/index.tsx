@@ -1,9 +1,16 @@
-const Result = () => {
+/** @jsxImportSource @emotion/react */
+import FormPart from "../../molecules/formPart";
+import TextArea from "../../atoms/textArea";
+
+const Form = () => {
+
   return (
     <>
-      <div>dummy</div>
+      <FormPart id="result" labelText="生成結果">
+        <TextArea />
+      </FormPart>
     </>
   );
 }
 
-export default Result;
+export default Form;
