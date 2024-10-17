@@ -1,4 +1,5 @@
 import moment from "moment-timezone";
+import pako from "pako";
 import { timezone } from "./define";
 import { DataObj } from "./types";
 
@@ -22,7 +23,15 @@ const checkRequiredData = (dataObj: DataObj, requiredProperties: string[]) => {
 
 export const createUrl = (dataObj: DataObj) => {
   const dataJson = createJson(dataObj);
-  console.log(dataJson);
+  if (!dataJson) {
+    return false;
+  }
+
+  const compressedData = compressData(dataJson);
+
+  const url = `https://timetr.ee/ne/${ compressedData }`;
+
+  return url;
 }
 
 const createJson = (dataObj: DataObj) => {
@@ -48,4 +57,12 @@ const createJson = (dataObj: DataObj) => {
   return dataJson;
 }
 
-
+const compressData = (json: string) => {
+  const compressed = pako.gzip(json);
+  const encoded = btoa(
+    new Uint8Array(compressed).reduce(
+      (data, byte) => data + String.fromCharCode(byte), ''
+    )
+  );
+  return encoded;
+}
