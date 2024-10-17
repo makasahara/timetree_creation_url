@@ -1,5 +1,6 @@
 import moment from "moment-timezone";
 import pako from "pako";
+import { encode } from "base-64";
 import { timezone } from "./define";
 import { DataObj } from "./types";
 
@@ -22,6 +23,7 @@ const checkRequiredData = (dataObj: DataObj, requiredProperties: string[]) => {
 }
 
 export const createUrl = (dataObj: DataObj) => {
+
   const dataJson = createJson(dataObj);
   if (!dataJson) {
     return false;
@@ -59,10 +61,6 @@ const createJson = (dataObj: DataObj) => {
 
 const compressData = (json: string) => {
   const compressed = pako.gzip(json);
-  const encoded = btoa(
-    new Uint8Array(compressed).reduce(
-      (data, byte) => data + String.fromCharCode(byte), ''
-    )
-  );
+  const encoded = encode(String.fromCharCode(...compressed));
   return encoded;
 }
