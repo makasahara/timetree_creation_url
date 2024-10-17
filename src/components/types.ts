@@ -1,5 +1,6 @@
-export type DataObj = {
-  category: 1;
+export interface DataObj {
+  [key: string]: string | undefined;
+  category: "1";
   title?: string;
   note?: string;
   startDate?: string;
