@@ -22,6 +22,7 @@ const checkRequiredData = (dataObj: DataObj, requiredProperties: string[]) => {
 }
 
 export const createUrl = (dataObj: DataObj) => {
+  
   const dataJson = createJson(dataObj);
   if (!dataJson) {
     return false;
@@ -59,10 +60,6 @@ const createJson = (dataObj: DataObj) => {
 
 const compressData = (json: string) => {
   const compressed = pako.gzip(json);
-  const encoded = btoa(
-    new Uint8Array(compressed).reduce(
-      (data, byte) => data + String.fromCharCode(byte), ''
-    )
-  );
+  const encoded = btoa(String.fromCharCode(...new Uint8Array(compressed)));
   return encoded;
 }
