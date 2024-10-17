@@ -2,12 +2,12 @@
 import FormPart from "../../molecules/formPart";
 import TextArea from "../../atoms/textArea";
 
-const Result = () => {
+const Result = ({ url }: { url: string }) => {
 
   return (
     <>
       <FormPart id="result" labelText="生成結果">
-        <TextArea resultId="result" />
+        <TextArea resultId="result" value={url} readonly />
       </FormPart>
     </>
   );

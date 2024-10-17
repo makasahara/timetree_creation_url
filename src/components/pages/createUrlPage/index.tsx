@@ -8,7 +8,7 @@ const createUrlPage = () => {
   const currentDateTime = new Date();
 
   const [dataObj, setDataObj] = useState<DataObj>({
-    category: 1,
+    category: "1",
     startDate: formatDate(currentDateTime),
     startTime: formatTime(currentDateTime),
     endDate: formatDate(currentDateTime),
@@ -16,8 +16,10 @@ const createUrlPage = () => {
     allDay: "0",
   });
 
+  const [url, setUrl] = useState<string>("");
+
   const handleCreateUrl = () => {
-    createUrl(dataObj);
+    setUrl(createUrl(dataObj) || '');
   }
 
   return (
@@ -27,6 +29,7 @@ const createUrlPage = () => {
         handleDataObj={setDataObj} 
         currentDateTime={currentDateTime} 
         handleCreateUrl={handleCreateUrl}
+        url={url}
       />
     </>
   );

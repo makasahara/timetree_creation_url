@@ -6,12 +6,14 @@ const CreateUrl = ({
   dataObj,
   handleDataObj,
   currentDateTime,
-  handleCreateUrl
+  handleCreateUrl,
+  url
 }: {
   dataObj: DataObj,
   handleDataObj: (dataObj: DataObj) => void,
   currentDateTime: Date,
-  handleCreateUrl: () => void
+  handleCreateUrl: () => void,
+  url: string,
 }) => {
   return (
     <>
@@ -21,7 +23,7 @@ const CreateUrl = ({
         currentDateTime={currentDateTime}
         handleCreateUrl={handleCreateUrl}
       />
-      <Result />
+      <Result url={url} />
     </>
   );
 }
